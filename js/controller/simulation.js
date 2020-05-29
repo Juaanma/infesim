@@ -1,12 +1,11 @@
-// Controlador para la simulación
+// Simulation controller
 
 import { parameters } from '../model/parameters.js';
 import { addOnParameterChangedListener } from '../view/parameters.js';
 import { initializePlot, plotConditionsEvolution } from '../view/plot.js';
 import { SIRModel, ODESolver } from '../model/simulation.js';
 
-// Ejecuta una nueva simulación. 
-// Convierte valores ingresados por el usuario a aquellos que necesita el modelo.
+// Maps user inputs to model inputs, and starts a new simulation
 function startSimulation() {
     const populationSize = parameters['population-size'].value;
     const infectedPercentage = parameters['infected-percentage'].value / 100;
@@ -32,7 +31,6 @@ function initializeSimulationController() {
 
     startSimulation();
 
-    // Cuando el usuario termina de editar, comienza una nueva simulación
     addOnParameterChangedListener(startSimulation);
 }
 

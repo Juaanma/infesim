@@ -1,6 +1,6 @@
-// La navegación no se divide con un estilo MVC, dado que la lógica es casi trivial y no está asociada a un modelo
+// Navigation isn't split into MVC, since the logic is quite simple and doesn't have a model associated
 
-// Selecciona la sección por defecto en caso que la sección actual no sea válida
+// Selects default section in case the current one isn't valid
 function checkCurrentSection() {
     const section = window.location.hash;
 
@@ -10,7 +10,7 @@ function checkCurrentSection() {
     }
 }
 
-// Actualiza headers en base a la sección actual
+// Updates header according to current section
 function updateSectionLinks() {
     const sectionLinks = $('.nav-header a');
     sectionLinks.removeClass('active');
@@ -20,12 +20,12 @@ function updateSectionLinks() {
     sectionNavLink.addClass('active');
 }
 
-// Realiza los controles de sección y las actualizaciones del header
+// Checks if current section is valid and updates header
 function initializeNavigation() {
     checkCurrentSection();
     updateSectionLinks();
 
-    // Cuando se realiza un cambio de sección, ejecuta los controles necesarios y actualiza la interfaz
+    // On section change, checks validity and updates UI
     $(window).on('hashchange', function() {
         checkCurrentSection();
         updateSectionLinks();

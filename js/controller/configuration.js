@@ -1,4 +1,4 @@
-// Controlador para la configuración de la app (actualmente, light / dark mode)
+// Configuration controller (light / dark mode)
 
 import { configuration, loadConfiguration, setLightMode, saveConfiguration } from '../model/configuration.js';
 import { initializeConfigurationView, addOnLightModeChangedListener, updateLightMode } from '../view/configuration.js';

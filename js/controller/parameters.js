@@ -1,4 +1,4 @@
-// Controlador para los parámetros de la simulación
+// Simulation parameters controller
 
 import { initializeParametersView, addOnParameterInputListener, addOnParameterChangedListener, updateParameterLabel } from '../view/parameters.js';
 import { parameters, loadParameters, setParameterInput, saveParameters } from '../model/parameters.js';

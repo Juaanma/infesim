@@ -37,7 +37,7 @@ a:hover {
 }
 
 /* Light / dark theme - Custom-control-input */
-/* Son muchas las reglas con especificidad de Bootstrap, utilizar !important sería otra alternativa. */
+/* Alternative to reduce rules: use !important */
 .custom-control-input:checked ~ .custom-control-label::before,
 .custom-control-input:not(:checked) ~ .custom-control-label::before,
 .custom-control-input:focus ~ .custom-control-label::before,
@@ -49,7 +49,7 @@ a:hover {
 }
 
 /* Simulation - Input range */
-/* Uso vendor prefixes para compatibilidad */
+/* Vendor prefixes for compatibility purposes */
 .custom-range::-webkit-slider-thumb {
   background-color: #fff;
 }

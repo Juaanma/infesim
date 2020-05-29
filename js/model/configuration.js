@@ -1,4 +1,4 @@
-// Modelo para la configuración de la app (actualmente, light / dark mode)
+// Configuration model (light / dark mode)
 
 let configuration;
 

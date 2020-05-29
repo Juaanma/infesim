@@ -1,4 +1,4 @@
-// Módulo encargado de inicializar la aplicación
+// Module in charge of app initialization
 
 import { initializeNavigation } from './view/navigation.js';
 import { initializeParametersController } from './controller/parameters.js';

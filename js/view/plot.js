@@ -1,9 +1,9 @@
-// Vista para el resultado de la simulación
+// Simulation plot view
 
 const ctx = document.getElementById('simulation-canvas').getContext('2d');
 let chart;
 
-// Crea al objeto chart, estableciendo su configuración
+// Creates chart object with initial configuration
 function initializePlot() {
     chart = new Chart(ctx, {
         type: 'line',
@@ -34,7 +34,6 @@ function initializePlot() {
                     }
                 }],
                 yAxes: [{
-                    // Gráfico stacked (una curva sobre otra) para visualización más intuitiva
                     stacked: true,
                     scaleLabel: {
                         display: true,
@@ -44,17 +43,15 @@ function initializePlot() {
             },
             elements: {
                 point: {
-                    // Oculta puntos
                     radius: 0
                 }
             },
             hover: {
-                // Permite hover sobre todo el gráfico
                 intersect: false
             },
             tooltips: {
                 callbacks: {
-                    // Redondea valores en el eje Y (para facilitar la comprensión de los datos)
+                    // Rounds Y-axis values
                     label: function(tooltipItem, data) {
                         const datasetLabel = data.datasets[tooltipItem.datasetIndex].label;
                         const yLabel = Math.round(tooltipItem.yLabel);
@@ -63,35 +60,32 @@ function initializePlot() {
                 }
             },
             legend: {
-                // Deshabilito funcionalidad para ocultar curvas
+                // Hiding data not allowed
                 onClick: () => false
             }
         }
     });
 }
 
-// Actualiza el gráfico con nuevos valores
+// Updates plot with new values
 function updatePlot(labels, datasets, maxY) {
     const data = chart.data;
     const ticks = chart.options.scales.yAxes[0].ticks;
 
-    // Seteo labels para eje X
     data.labels = labels;
-    // Seteo datos
     for (let i = 0; i < datasets.length; i++) {
         data.datasets[i].data = datasets[i];
     }
 
-    // Forzamos un valor máximo para el eje Y (para visualización más clara)
+    // Max Y value forced
     ticks.max = maxY;
-    // Pero no mostramos el label correspondiente en el eje (ya que puede estar muy cerca del label anterior)
+    // Max Y label not shown (in case it's too close to previous label)
     ticks.callback = tick => (tick !== maxY ? tick : '');
 
     chart.update();
 }
 
-// Recibe una matriz con la evolución de las variables.
-// La convierte al formato necesario para que sea graficada, y actualiza el gráfico.
+// Maps simulation results to plot inputs
 function plotConditionsEvolution(conditionsEvolution) {
     const labels = [...conditionsEvolution.keys()];
 
@@ -99,10 +93,10 @@ function plotConditionsEvolution(conditionsEvolution) {
     const infectedEvolution = conditionsEvolution.map(row => row[1]);
     const recoveredEvolution = conditionsEvolution.map(row => row[2]);
 
-    // Transpone los datos
+    // Transposing
     const datasets = [susceptibleEvolution, infectedEvolution, recoveredEvolution];
 
-    // Calcula máximo valor para eje Y (población total)
+    // Max Y value
     const totalPopulation = susceptibleEvolution[0] + infectedEvolution[0] + recoveredEvolution[0];
 
     updatePlot(labels, datasets, totalPopulation);

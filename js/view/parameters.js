@@ -1,4 +1,4 @@
-// Vista para los parámetros de la simulación
+// Simulation parameters view
 
 function initializeParametersView(parameters) {
     for (const parameter in parameters) {
@@ -19,7 +19,7 @@ function updateParameterInput(parameter, input) {
     inputRange.val(input)
 }
 
-// El evento input ocurre cuando se modifica el slider
+// Input: on slider modified
 function addOnParameterInputListener(listener) {
     $(document).on('input', '.parameter', function() {
         const range = $(this);
@@ -30,7 +30,7 @@ function addOnParameterInputListener(listener) {
     });
 }
 
-// El evento change ocurre cuando se termina de modificar el slider
+// Change: on slider modification finished
 function addOnParameterChangedListener(listener) {
     $(document).on('change', '.parameter', function() {
         const range = $(this);
