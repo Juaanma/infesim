@@ -1,71 +1,56 @@
 # infesim
-## Introducción
-Este repositorio corresponde a la aplicación web [**infesim**](https://juaanma.github.io/proyecto-1/), 
-que permite realizar simulaciones sobre la evolución de enfermedades infecciosas, utilizando
-modelos matemáticos.
+## Introduction
+[**infesim**](https://juaanma.github.io/infesim/) is a web app that allows the user to 
+run simulations about the evolution of infectious diseases, using mathematical models.
 
-### Modelo SIR
-En particular, se utiliza el [modelo SIR](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SIR_model), que divide a la población en tres grupos:
+### SIR Model
+In particular, it uses the [**SIR model**](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SIR_model), that consists of three compartments:
 
-* Población susceptible (S): individuos que pueden ser contagiados.
-* Población infectada (I): individuos que tienen la enfermedad.
-* Población recuperada (R): individuos que ya no tienen la enfermedad.
+* Susceptible individuals (S)
+* Infectious individuals (I)
+* Recovered individuals (R)
 
-La evolución de la población se modela mediante un [conjunto de ecuaciones diferenciales](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SIR_model_without_vital_dynamics).
+The dynamics of the epidemic can be described by a [set of ordinary differential equations](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SIR_model_without_vital_dynamics).
 
-### Simulación
-La simulación entonces se resume a resolver este sistema de ecuaciones.
-En particular, se trata de un sistema de ecuaciones diferenciales ordinarias (ODE, por sus siglas en inglés), que puede resolverse fácilmente con el [**método de Euler**](https://en.wikipedia.org/wiki/Euler_method).
-Este método consta de tomar pequeños pasos, sumando a la variable el incremento estimado por la pendiente.
+### Simulation
+The simulation is reduced to solving the previous set of equations.
 
-## Implementación
-### Arquitectura
-La estructura utilizada para los archivos JS está inspirada en la arquitectura MVC.
+Since it's an ODE, it can be easily solved using the [**Euler method**](https://en.wikipedia.org/wiki/Euler_method).
+This method consists of taking small steps, and repeatedly adding the slope.
 
-En particular, se pueden distinguir cuatro grupos de componentes, correspondientes a: la navegación,
-la configuración, los parámetros y la simulación.
+## Implementation
+### Architecture
+The structure used for the project is inspired by the MVC architecture.
 
-Para facilitar la claridad y la modularidad, cada archivo JS contiene un módulo con imports y exports.
+We can distinguish four groups of components, corresponding to: the navigation, the configuration, the parameters and the simulation.
 
-### Navegación
-Este componente se encarga de actualizar el header según la sección seleccionada (obtenida del URL), y
-de seleccionar la sección por defecto en caso de que la actual sea inválida.
+To improve the clarity and modularity of the code, each JS file contains a JS module.
 
-### Parámetros
-Estos componentes se encargan de mostrar los parámetros, almacenarlos, y recibir eventos relacionados.
+### Navigation
+This component updates the header according to the current section.
 
-Una observación importante es que cada parámetro consta de dos atributos: _input_ (el valor obtenido
-del DOM) y _value_ (el valor al que se mapea el _input_ en la aplicación). Por ejemplo, si la 
-_range bar_ de la población se encuentra en la segunda posición, _input_ es 2 mientras que _value_ es 16.
+### Parameters
+These components display the parameters, store them, and manage related events.
 
-### Configuración
-Estos componentes se encargan de mostrar la configuración actual (el estilo light o dark), almacenarla,
-y recibir eventos relacionados.
+### Configuration
+These components display and store the current style, and manage related events.
 
-### Simulación
-Estos componentes se encargan de recibir eventos de cambios de parámetro, realizar la simulación correspondiente,
-y mostrar los resultados.
+### Simulation
+When the parameters are updated, a new simulation is run and its results are displayed when ready.
 
-En particular, es importante destacar:
+## Compatibility
+This website is working correctly in the last versions of: Chrome, Firefox, Opera and Edge. The UI is responsive, so that the site can be used from mobile devices. 
 
-* La "clase" _SIRModel_ representa el sistema de ecuaciones a resolver.
-* La "clase" _ODESolver_ permite resolver un sistema de ecuaciones diferenciales ordinarias.
-* El controlador mapea los parámetros ingresados por el usuario a aquellos utilizados por el modelo.
-* La vista _plot_ provee métodos para graficar un conjunto de datos y define las opciones del gráfico.
+## Credits
+### Inspiration
+Inspired in [Simulating an epidemic](https://www.youtube.com/watch?v=gxAaO2rsdIs) by _3blue1brown_.
 
-## Compatibilidad
-Se comprobó que la aplicación funciona correctamente en las últimas versiones de: Chrome, Firefox, Opera y Edge. Además, la UI es responsive y se adapta a dispositivos móviles.
+### Libraries
+* [jQuery 3.5.0](https://code.jquery.com/)
+* [Bootstrap 4.3.1](https://getbootstrap.com/docs/4.3/getting-started/download/)
+* [KaTeX 0.11.1](https://katex.org/docs/browser.html)
+* [Chart.js 2.9.3](https://www.chartjs.org/docs/latest/getting-started/installation.html)
 
-## Fuentes
-### Inspiración
-El desarrollo de esta aplicación está fuertemente inspirado en el video [Simulating an epidemic](https://www.youtube.com/watch?v=gxAaO2rsdIs) de _3blue1brown_.
-
-### Librerías
-* Para simplificar el código JS: [jQuery 3.5.0](https://code.jquery.com/)
-* Framework CSS para facilitar el diseño: [Bootstrap 4.3.1](https://getbootstrap.com/docs/4.3/getting-started/download/)
-* Renderizado de LaTeX en la web: [KaTeX 0.11.1](https://katex.org/docs/browser.html)
-* Gráficos interactivos: [Chart.js 2.9.3](https://www.chartjs.org/docs/latest/getting-started/installation.html)
-
-### Otros recursos
-* Para íconos _material_: [Material Icons](https://google.github.io/material-design-icons/)
-* Estilo basado en: [Cover template - Bootstrap](https://getbootstrap.com/docs/4.3/examples/cover/#)
+### Other resources
+* [Material Icons](https://google.github.io/material-design-icons/)
+* [Cover template - Bootstrap](https://getbootstrap.com/docs/4.3/examples/cover/#)
