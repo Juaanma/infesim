@@ -9,17 +9,17 @@ function initializePlot() {
         type: 'line',
         data: {
             datasets: [{
-                label: 'Susceptibles',
+                label: 'Susceptible',
                 order: 1,
                 backgroundColor: '#7fbf7f',
                 borderColor: '#7fbf7f'
             }, {
-                label: 'Infectados',
+                label: 'Infectious',
                 order: 0,
                 backgroundColor: '#f66',
                 borderColor: '#f66'
             },  {
-                label: 'Recuperados',
+                label: 'Recovered',
                 order: 2,
                 backgroundColor: '#202020',
                 borderColor: '#202020'
@@ -30,14 +30,14 @@ function initializePlot() {
                 xAxes: [{
                     scaleLabel: {
                         display: true,
-                        labelString: 'Días'
+                        labelString: 'Days'
                     }
                 }],
                 yAxes: [{
                     stacked: true,
                     scaleLabel: {
                         display: true,
-                        labelString: 'Población'
+                        labelString: 'Population'
                     }
                 }]
             },
