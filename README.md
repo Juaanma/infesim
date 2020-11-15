@@ -1,6 +1,6 @@
 # infesim
 ## Introduction
-[**infesim**](https://juaanma.github.io/infesim/) is a web app that allows the user to 
+[**infesim**](https://juanmsuarez.github.io/infesim/) is a web app that allows the user to 
 run simulations about the evolution of infectious diseases, using mathematical models.
 
 ### SIR Model
